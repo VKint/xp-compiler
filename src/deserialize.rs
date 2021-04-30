@@ -8,7 +8,15 @@ pub struct XpCallJson<'a> {
     args: Vec<&'a str>,
 }
 
-impl XpCallJson<'_> {
+impl<'a> XpCallJson<'a> {
+    pub fn new(language: &'a str, call: &'a str, args: Vec<&'a str>) -> Self {
+        Self {
+            language,
+            call,
+            args
+        }
+    }
+
     pub fn compile(self) -> Result<String, CompileError> {
         let compiler = match self.language {
             consts::langs::MOVE => move_compiler::generators::Generator,
