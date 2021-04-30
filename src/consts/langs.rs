@@ -1,1 +1,1 @@
-pub const MOVE: &str = "MOVE_VM";
+pub const MOVE: &str = "move";

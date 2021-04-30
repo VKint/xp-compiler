@@ -2,6 +2,9 @@ mod consts;
 pub mod deserialize;
 mod errors;
 
+#[cfg(test)]
+mod tests;
+
 pub enum SupportedLanguages {
     Move
 }

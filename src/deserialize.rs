@@ -18,14 +18,14 @@ impl XpCallJson<'_> {
 
         match self.call {
             consts::calls::CREATE_ACC => {
-                if self.args.len() <= 1 {
+                if self.args.len() < 1 {
                     return Err(CompileError::InvalidArgs);
                 }
                 let address: u128 = self.args[0].parse().map_err(|_| CompileError::InvalidArgs)?;
                 Ok(compiler.create_account(address))
             },
             consts::calls::TRANSFER_AMOUNT => {
-                if self.args.len() <= 2 {
+                if self.args.len() < 2 {
                     return Err(CompileError::InvalidArgs);
                 }
                 let receiever: u128 = self.args[0].parse().map_err(|_| CompileError::InvalidArgs)?;

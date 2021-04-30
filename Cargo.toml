@@ -9,6 +9,7 @@ edition = "2018"
 [dependencies]
 move-compiler = { git = "https://github.com/xpdiem/move-compiler", default-features = false }
 serde = "1.0"
+serde_json = "1.0"
 thiserror = "1.0"
 
 [features]
