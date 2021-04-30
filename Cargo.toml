@@ -1,0 +1,15 @@
+[package]
+name = "xp-compiler"
+version = "0.1.0"
+authors = ["Dmitry Brook <dmitrii_bryuhanov@mail.ru>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+move-compiler = { git = "https://github.com/xpdiem/move-compiler" }
+serde = "1"
+
+[features]
+default = [ "diem_coin_xdx" ]
+diem_coin_xdx = []
