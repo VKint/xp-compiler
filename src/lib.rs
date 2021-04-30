@@ -1,8 +1,9 @@
 mod consts;
-mod deserialize;
+pub mod deserialize;
+mod errors;
 
-pub enum SupportedCompilers {
-    Move(move_compiler::generators::Generator),
+pub enum SupportedLanguages {
+    Move
 }
 
 pub trait XpCompiler {
