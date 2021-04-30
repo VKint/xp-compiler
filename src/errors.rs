@@ -7,5 +7,5 @@ pub enum CompileError {
     #[error("unsupported function: {0}")]
     UnsupportedCall(String),
     #[error("invalid args")]
-    InvalidArgs
+    InvalidArgs,
 }
