@@ -1,6 +1,6 @@
-mod consts;
+pub mod consts;
 pub mod deserialize;
-mod errors;
+pub mod errors;
 
 #[cfg(test)]
 mod tests;
