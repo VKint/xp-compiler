@@ -7,7 +7,10 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-move-compiler = { git = "https://github.com/xpdiem/move-compiler", default-features = false }
+move-compiler = { git = "https://github.com/xp-network/move-compiler", default-features = false }
+solidity-compiler = { git = "https://github.com/xp-network/solidity-compiler", default-features = false }
+evm-asm = { git = "https://github.com/xp-network/evm-asm" }
+move-binary-format = { git = "https://github.com/xp-network/diem", branch = "main" }
 serde = "1.0"
 serde_json = "1.0"
 thiserror = "1.0"
@@ -15,4 +18,4 @@ thiserror = "1.0"
 [features]
 default = [ "diem_coin_xdx", "test_generated" ]
 diem_coin_xdx = []
-test_generated = [ "move-compiler/test_generated" ]
+test_generated = [ "move-compiler/test_generated", "solidity-compiler/test_generated" ]

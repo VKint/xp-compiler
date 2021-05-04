@@ -19,15 +19,8 @@ fn test_move_create_child() {
     }
 }
 
-#[test]
-fn test_move_transfer_amount() {
-    let transfer_amount_data = r#"
-        {
-            "language": "move",
-            "call": "transfer_amount",
-            "args": ["1", "32"]
-    }"#;
-    let call: Result<XpCallJson, serde_json::Error> = serde_json::from_str(transfer_amount_data);
+fn test_transfer_amount(data: &str) {
+    let call: Result<XpCallJson, serde_json::Error> = serde_json::from_str(data);
     assert!(call.is_ok());
     let call = call.unwrap();
 
@@ -36,4 +29,26 @@ fn test_move_transfer_amount() {
     if cfg!(feature = "test_generated") {
         println!("{}", compile.unwrap());
     }
+}
+
+#[test]
+fn test_move_transfer_amount() {
+    let transfer_amount_data = r#"
+        {
+            "language": "move",
+            "call": "transfer_amount",
+            "args": ["1", "32"]
+    }"#;
+    test_transfer_amount(transfer_amount_data);
+}
+
+#[test]
+fn test_solidity_transfer_amount() {
+    let transfer_amount_data = r#"
+    {
+        "language": "solidity",
+        "call": "transfer_amount",
+        "args": ["106Ca83003090c63B03d3fE3A9EE3B5E36C155CD", "32"]
+    }"#;
+   test_transfer_amount(transfer_amount_data); 
 }
