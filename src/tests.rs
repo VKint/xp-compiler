@@ -1,4 +1,6 @@
 use crate::deserialize::XpCallJson;
+use move_binary_format::file_format::*;
+use evm_asm::MoveCode;
 
 #[test]
 fn test_move_create_child() {
@@ -51,4 +53,17 @@ fn test_solidity_transfer_amount() {
         "args": ["106Ca83003090c63B03d3fE3A9EE3B5E36C155CD", "32"]
     }"#;
    test_transfer_amount(transfer_amount_data); 
+}
+
+#[test]
+fn test_move_deserialize() {
+    let bytedata = include_bytes!("../assets/call.mv");
+    let script = CompiledScript::deserialize(bytedata).unwrap();
+    let code = MoveCode::new_no_mods(script);
+    let call = XpCallJson::from_move(&code).unwrap();
+
+    let compile = call.compile().unwrap();
+    if cfg!(feature = "test_generated") {
+        println!("{}", compile);
+    }
 }

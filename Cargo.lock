@@ -393,7 +393,7 @@ dependencies = [
 [[package]]
 name = "diem-crypto"
 version = "0.0.1"
-source = "git+https://github.com/xp-network/diem#af3e4c734d84d19f344c52c7308d5a3ff9cae321"
+source = "git+https://github.com/xp-network/diem?branch=main#3bc496cf468b107cf5527a9870c850d5832a9ffc"
 dependencies = [
  "aes-gcm",
  "anyhow",
@@ -422,7 +422,7 @@ dependencies = [
 [[package]]
 name = "diem-crypto-derive"
 version = "0.0.1"
-source = "git+https://github.com/xp-network/diem#af3e4c734d84d19f344c52c7308d5a3ff9cae321"
+source = "git+https://github.com/xp-network/diem?branch=main#3bc496cf468b107cf5527a9870c850d5832a9ffc"
 dependencies = [
  "proc-macro2 1.0.26",
  "quote 1.0.9",
@@ -432,7 +432,7 @@ dependencies = [
 [[package]]
 name = "diem-types"
 version = "0.0.1"
-source = "git+https://github.com/xp-network/diem#af3e4c734d84d19f344c52c7308d5a3ff9cae321"
+source = "git+https://github.com/xp-network/diem?branch=main#3bc496cf468b107cf5527a9870c850d5832a9ffc"
 dependencies = [
  "aes-gcm",
  "anyhow",
@@ -444,7 +444,7 @@ dependencies = [
  "hex",
  "itertools 0.10.0",
  "mirai-annotations",
- "move-core-types 0.0.1 (git+https://github.com/xp-network/diem)",
+ "move-core-types",
  "once_cell",
  "rand 0.8.3",
  "serde",
@@ -565,12 +565,12 @@ dependencies = [
 [[package]]
 name = "evm-asm"
 version = "0.1.0"
-source = "git+https://github.com/xp-network/evm-asm#3d3e4b1f1951bb45cd7bde6e60e5d1608e03a5ef"
+source = "git+https://github.com/xp-network/evm-asm#4d9f8891158fc1dc5283be9cde91d769ad603d6c"
 dependencies = [
  "clap",
  "hex",
  "move-binary-format",
- "move-core-types 0.0.1 (git+https://github.com/xp-network/diem?branch=main)",
+ "move-core-types",
  "num-bigint",
  "rsevmasm",
  "thiserror",
@@ -1127,7 +1127,7 @@ dependencies = [
  "anyhow",
  "diem-workspace-hack",
  "mirai-annotations",
- "move-core-types 0.0.1 (git+https://github.com/xp-network/diem?branch=main)",
+ "move-core-types",
  "num-variants",
  "once_cell",
  "ref-cast",
@@ -1136,7 +1136,7 @@ dependencies = [
 [[package]]
 name = "move-compiler"
 version = "0.1.0"
-source = "git+https://github.com/xp-network/move-compiler#8e213a77c3bcc1d51ed5b599c5b7350bdf76873b"
+source = "git+https://github.com/xp-network/move-compiler#fd8c149b39e0c1b2cc44f98d5c148552c050ffdd"
 dependencies = [
  "bcs",
  "diem-types",
@@ -1151,22 +1151,6 @@ dependencies = [
 name = "move-core-types"
 version = "0.0.1"
 source = "git+https://github.com/xp-network/diem?branch=main#3bc496cf468b107cf5527a9870c850d5832a9ffc"
-dependencies = [
- "anyhow",
- "bcs",
- "hex",
- "mirai-annotations",
- "once_cell",
- "rand 0.8.3",
- "ref-cast",
- "serde",
- "serde_bytes",
-]
-
-[[package]]
-name = "move-core-types"
-version = "0.0.1"
-source = "git+https://github.com/xp-network/diem#af3e4c734d84d19f344c52c7308d5a3ff9cae321"
 dependencies = [
  "anyhow",
  "bcs",

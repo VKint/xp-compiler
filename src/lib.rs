@@ -2,6 +2,8 @@ pub mod consts;
 pub mod deserialize;
 pub mod errors;
 
+pub mod helpers;
+
 #[cfg(test)]
 mod tests;
 
