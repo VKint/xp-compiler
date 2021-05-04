@@ -1,6 +1,6 @@
 use crate::deserialize::XpCallJson;
-use move_binary_format::file_format::*;
 use evm_asm::MoveCode;
+use move_binary_format::file_format::*;
 
 #[test]
 fn test_move_create_child() {
@@ -52,7 +52,7 @@ fn test_solidity_transfer_amount() {
         "call": "transfer_amount",
         "args": ["106Ca83003090c63B03d3fE3A9EE3B5E36C155CD", "32"]
     }"#;
-   test_transfer_amount(transfer_amount_data); 
+    test_transfer_amount(transfer_amount_data);
 }
 
 #[test]

@@ -5,7 +5,7 @@ pub enum GenerationError {
     #[error("argument parse error")]
     ParseError,
     #[error("unsupported function")]
-    UnsupportedCall
+    UnsupportedCall,
 }
 
 #[derive(Error, Debug)]
@@ -22,7 +22,7 @@ impl CompileError {
     pub(crate) fn from_generation(e: GenerationError, s: String) -> Self {
         match e {
             GenerationError::ParseError => Self::InvalidArgs,
-            GenerationError::UnsupportedCall => Self::UnsupportedCall(s)
+            GenerationError::UnsupportedCall => Self::UnsupportedCall(s),
         }
     }
 }

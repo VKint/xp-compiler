@@ -1,6 +1,6 @@
 use crate::{consts, errors::CompileError, XpCompiler};
-use move_binary_format::file_format::*;
 use evm_asm::MoveCode;
+use move_binary_format::file_format::*;
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -15,7 +15,7 @@ impl XpCallJson {
         Self {
             language,
             call,
-            args
+            args,
         }
     }
 
@@ -43,7 +43,7 @@ impl XpCallJson {
                     } else {
                         args.push(s);
                     }
-                },
+                }
                 Bytecode::Call(idx) if lang.is_some() => {
                     if cflag {
                         let fun = code.fn_handle(*idx).name;
@@ -52,8 +52,8 @@ impl XpCallJson {
                     } else {
                         cflag = true;
                     }
-                },
-                _ => ()
+                }
+                _ => (),
             }
         }
 
@@ -70,27 +70,27 @@ impl XpCallJson {
                 if self.args.len() < 1 {
                     return Err(CompileError::InvalidArgs);
                 }
-                compiler.create_account(&self.args[0]).map_err(|e| CompileError::from_generation(e, self.call.to_string()))
-            },
+                compiler
+                    .create_account(&self.args[0])
+                    .map_err(|e| CompileError::from_generation(e, self.call.to_string()))
+            }
             consts::calls::TRANSFER_AMOUNT => {
                 if self.args.len() < 2 {
                     return Err(CompileError::InvalidArgs);
                 }
-                compiler.transfer_amount(&self.args[0], &self.args[1]).map_err(|e| CompileError::from_generation(e, self.call.to_string()))
-            },
+                compiler
+                    .transfer_amount(&self.args[0], &self.args[1])
+                    .map_err(|e| CompileError::from_generation(e, self.call.to_string()))
+            }
             _ => return Err(CompileError::UnsupportedCall(self.call.to_string())),
         }
     }
 
     pub fn compile(self) -> Result<String, CompileError> {
         match self.language.as_str() {
-            consts::langs::MOVE => {
-                self.decode_call(move_compiler::generators::Generator)
-            },
-            consts::langs::SOLIDITY => {
-                self.decode_call(solidity_compiler::generators::Generator)
-            },
-            _ => return Err(CompileError::UnsupportedLang(self.language.to_string()))
+            consts::langs::MOVE => self.decode_call(move_compiler::generators::Generator),
+            consts::langs::SOLIDITY => self.decode_call(solidity_compiler::generators::Generator),
+            _ => return Err(CompileError::UnsupportedLang(self.language.to_string())),
         }
     }
 }

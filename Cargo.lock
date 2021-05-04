@@ -146,6 +146,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "bigint"
+version = "4.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c0e8c8a600052b52482eff2cf4d810e462fdff1f656ac1ecb6232132a1ed7def"
+dependencies = [
+ "byteorder",
+ "crunchy 0.1.6",
+]
+
+[[package]]
 name = "bitflags"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -350,6 +360,12 @@ dependencies = [
  "cfg-if",
  "lazy_static",
 ]
+
+[[package]]
+name = "crunchy"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a2f4a431c5c9f662e1200b7c7f02c34e91361150e382089a8f2dec3ba680cbda"
 
 [[package]]
 name = "crunchy"
@@ -1988,9 +2004,11 @@ dependencies = [
 [[package]]
 name = "solidity-compiler"
 version = "0.1.0"
-source = "git+https://github.com/xp-network/solidity-compiler#99471c52d05902d991dc698cccf4b31b0f871844"
+source = "git+https://github.com/xp-network/solidity-compiler#fd25ce3150e924e533b179467a933e004448d76b"
 dependencies = [
+ "once_cell",
  "reusable-fmt",
+ "rsevmasm",
  "thiserror",
 ]
 
@@ -2139,7 +2157,7 @@ version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2c9d3793400a45f954c52e73d068316d76b6f4e36977e3fcebb13a2721e80237"
 dependencies = [
- "crunchy",
+ "crunchy 0.2.2",
 ]
 
 [[package]]
@@ -2649,7 +2667,9 @@ dependencies = [
 name = "xp-compiler"
 version = "0.1.0"
 dependencies = [
+ "bigint",
  "evm-asm",
+ "hex",
  "move-binary-format",
  "move-compiler",
  "serde",

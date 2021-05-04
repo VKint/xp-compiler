@@ -2,8 +2,6 @@ pub mod consts;
 pub mod deserialize;
 pub mod errors;
 
-pub mod helpers;
-
 #[cfg(test)]
 mod tests;
 
@@ -11,7 +9,7 @@ use errors::GenerationError;
 
 pub enum SupportedLanguages {
     Move,
-    Solidity
+    Solidity,
 }
 
 pub trait XpCompiler {
@@ -36,11 +34,11 @@ impl XpCompiler for move_compiler::generators::Generator {
         use move_compiler::generators::Generator;
 
         Ok(Generator::payment_p2p(
-                consts::diem::COIN,
-                receiver.parse().map_err(|_| GenerationError::ParseError)?,
-                amount.parse().map_err(|_| GenerationError::ParseError)?,
-                None,
-                None
+            consts::diem::COIN,
+            receiver.parse().map_err(|_| GenerationError::ParseError)?,
+            amount.parse().map_err(|_| GenerationError::ParseError)?,
+            None,
+            None,
         ))
     }
 }
@@ -52,6 +50,23 @@ impl XpCompiler for solidity_compiler::generators::Generator {
 
     fn transfer_amount(&self, receiver: &str, amount: &str) -> Result<String, GenerationError> {
         use solidity_compiler::generators::Generator;
-        Ok(Generator::payment_p2p(receiver, amount))
+        let amount = bigint::U256::from_dec_str(amount).map_err(|_| GenerationError::ParseError)?;
+        let mut am_data: [u8; 32] = [0u8; 32];
+        amount.to_big_endian(&mut am_data);
+        let mut flag = false;
+        let mut filtered: Vec<u8> = Vec::new();
+        for e in am_data.iter() {
+            if flag {
+                filtered.push(*e);
+            } else if *e != 0 {
+                filtered.push(*e);
+                flag = true;
+            }
+        }
+
+        Ok(hex::encode(Generator::payment_p2p_bytes(
+            &hex::decode(receiver).map_err(|_| GenerationError::ParseError)?,
+            &filtered,
+        )))
     }
 }
