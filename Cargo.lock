@@ -2004,7 +2004,7 @@ dependencies = [
 [[package]]
 name = "solidity-compiler"
 version = "0.1.0"
-source = "git+https://github.com/xp-network/solidity-compiler#4a048836d39b122d313fbaaacd84132fefd5d02e"
+source = "git+https://github.com/xp-network/solidity-compiler#9d36cc1dd5b3b9ca47755db090f8196e503b3ca8"
 dependencies = [
  "once_cell",
  "reusable-fmt",

@@ -21,3 +21,6 @@ bigint = "4.4.3"
 default = [ "diem_coin_xdx", "test_generated" ]
 diem_coin_xdx = []
 test_generated = [ "move-compiler/test_generated", "solidity-compiler/test_generated" ]
+
+[[bin]]
+name = "xp-compiler-test"
