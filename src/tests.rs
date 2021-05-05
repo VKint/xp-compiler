@@ -10,26 +10,20 @@ fn test_move_create_child() {
         "call": "create_account",
         "args": ["1"]
     }"#;
-    let call: Result<XpCallJson, serde_json::Error> = serde_json::from_str(create_acc_data);
-    assert!(call.is_ok());
-    let call = call.unwrap();
+    let call: XpCallJson = serde_json::from_str(create_acc_data).unwrap();
 
-    let compile = call.compile();
-    assert!(compile.is_ok());
+    let compile = call.compile().unwrap();
     if cfg!(feature = "test_generated") {
-        println!("{}", compile.unwrap());
+        println!("{}", compile);
     }
 }
 
 fn test_transfer_amount(data: &str) {
-    let call: Result<XpCallJson, serde_json::Error> = serde_json::from_str(data);
-    assert!(call.is_ok());
-    let call = call.unwrap();
+    let call: XpCallJson = serde_json::from_str(data).unwrap();
 
-    let compile = call.compile();
-    assert!(compile.is_ok());
+    let compile = call.compile().unwrap();
     if cfg!(feature = "test_generated") {
-        println!("{}", compile.unwrap());
+        println!("{}", compile);
     }
 }
 
