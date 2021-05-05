@@ -1,6 +1,7 @@
 ## Usage
 
 Below are instructions on how to use XP-Compiler.
+Prerequisites: installed Rust & cargo.
 
 ### To add the required dependencies
 
