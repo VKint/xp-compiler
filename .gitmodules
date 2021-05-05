@@ -1,0 +1,3 @@
+[submodule "lib/xp-compiler-broadcast-test"]
+	path = lib/xp-compiler-broadcast-test
+	url = https://github.com/VKint/xp-compiler-broadcast-test
