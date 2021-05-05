@@ -12,12 +12,16 @@ pub enum SupportedLanguages {
     Solidity,
 }
 
+// Common interface
 pub trait XpCompiler {
+
     fn create_account(&self, address: &str) -> Result<String, GenerationError>;
     fn transfer_amount(&self, receiver: &str, amount: &str) -> Result<String, GenerationError>;
 }
 
+// Implementation for the move_compiler
 impl XpCompiler for move_compiler::generators::Generator {
+
     fn create_account(&self, address: &str) -> Result<String, GenerationError> {
         use move_compiler::generators::Generator;
 
@@ -42,7 +46,7 @@ impl XpCompiler for move_compiler::generators::Generator {
         ))
     }
 }
-
+// Implementation for the solidity_compiler
 impl XpCompiler for solidity_compiler::generators::Generator {
     fn create_account(&self, _: &str) -> Result<String, GenerationError> {
         Err(GenerationError::UnsupportedCall)

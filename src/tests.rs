@@ -18,6 +18,7 @@ fn test_move_create_child() {
     }
 }
 
+// Commonized code
 fn test_transfer_amount(data: &str) {
     let call: XpCallJson = serde_json::from_str(data).unwrap();
 

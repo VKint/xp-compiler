@@ -1,5 +1,6 @@
 use thiserror::Error;
 
+// Occurs when generating smart contracts
 #[derive(Error, Debug)]
 pub enum GenerationError {
     #[error("argument parse error")]
@@ -8,6 +9,7 @@ pub enum GenerationError {
     UnsupportedCall,
 }
 
+// Occurs when XpCallJson fails to compile the smart contract
 #[derive(Error, Debug)]
 pub enum CompileError {
     #[error("unsupported language: {0}")]
@@ -18,6 +20,7 @@ pub enum CompileError {
     InvalidArgs,
 }
 
+// Implementation of the compiler error
 impl CompileError {
     pub(crate) fn from_generation(e: GenerationError, s: String) -> Self {
         match e {
