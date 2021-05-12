@@ -71,5 +71,9 @@ fn main() {
 
     solc.push(Instruction::Stop);
 
-    println!("{}", hex::encode(rsevmasm::assemble_instructions(solc)));
+    let raw = rsevmasm::assemble_instructions(solc);
+    println!("Solidity Bytecode: {}", hex::encode(&raw));
+
+    println!("Dissassembly");
+    evm_asm::helpers::disassemble_evm(&raw).unwrap();
 }
