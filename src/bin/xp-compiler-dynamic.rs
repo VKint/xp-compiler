@@ -53,6 +53,9 @@ fn main() {
     // Coin module
     let cmod = include_bytes!("../../assets/coin_m.mv");
 
+    println!("Move Script Bytecode: {}", hex::encode(&coin_s));
+    println!("Move Module bytecode: {}", hex::encode(&cmod));
+
     // Deserialize bytecode
     let script = CompiledScript::deserialize(coin_s).unwrap();
     let cmd = CompiledModule::deserialize(cmod).unwrap();
@@ -69,11 +72,17 @@ fn main() {
         }
     }
 
+    println!();
+    println!("Move Disassembly");
+    mv.disassemble_with_mods().unwrap();
+    println!();
+
     solc.push(Instruction::Stop);
-
     let raw = rsevmasm::assemble_instructions(solc);
-    println!("Solidity Bytecode: {}", hex::encode(&raw));
 
-    println!("Dissassembly");
+
+    println!("Solidity Disassembly");
     evm_asm::helpers::disassemble_evm(&raw).unwrap();
+
+    println!("Soldity Bytecode: {}", hex::encode(&raw));
 }
