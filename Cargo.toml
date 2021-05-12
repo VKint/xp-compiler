@@ -28,3 +28,6 @@ name = "xp-compiler-test"
 
 [[bin]]
 name = "xp-compiler-dynamic"
+
+[[bin]]
+name = "xp-dynamic-test"
