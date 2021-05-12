@@ -35,3 +35,8 @@ Deployed contract address: 0x87cA931C7669344C7f9c5a185991c65BdB3A1B9B
 sent wei to contract. hash: 0xde0001b2717a3f7afcc84202d12ace85bcef8f633214b27541ca9bbfbb8e74b8
 Executed contract! TxHash: 0x9e5419ab57a2ae7607a9c2f985fd79ae099e195eb78459052d447202cb87d7e7
 ```
+
+### Dynamic Recompilation PoC
+```terminal
+cargo run --bin xp-compiler-dynamic
+```

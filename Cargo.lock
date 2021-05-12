@@ -2672,6 +2672,7 @@ dependencies = [
  "hex",
  "move-binary-format",
  "move-compiler",
+ "rsevmasm",
  "serde",
  "serde_json",
  "solidity-compiler",

@@ -16,6 +16,7 @@ serde_json = "1.0"
 thiserror = "1.0"
 hex = "0.4"
 bigint = "4.4.3"
+rsevmasm = "0.5"
 
 [features]
 default = [ "diem_coin_xdx", "test_generated" ]
@@ -24,3 +25,6 @@ test_generated = [ "move-compiler/test_generated", "solidity-compiler/test_gener
 
 [[bin]]
 name = "xp-compiler-test"
+
+[[bin]]
+name = "xp-compiler-dynamic"

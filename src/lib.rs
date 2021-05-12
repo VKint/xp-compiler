@@ -22,6 +22,9 @@ pub trait XpCompiler {
 // Implementation for the move_compiler
 impl XpCompiler for move_compiler::generators::Generator {
 
+    /// Create a child VASP account
+    ///
+    /// address: u128
     fn create_account(&self, address: &str) -> Result<String, GenerationError> {
         use move_compiler::generators::Generator;
 
@@ -48,10 +51,15 @@ impl XpCompiler for move_compiler::generators::Generator {
 }
 // Implementation for the solidity_compiler
 impl XpCompiler for solidity_compiler::generators::Generator {
+    /// Not applicable in EVM
     fn create_account(&self, _: &str) -> Result<String, GenerationError> {
         Err(GenerationError::UnsupportedCall)
     }
 
+    /// Transfer from one EVM address to another
+    ///
+    /// receiver: H160 \
+    /// amount: U256
     fn transfer_amount(&self, receiver: &str, amount: &str) -> Result<String, GenerationError> {
         use solidity_compiler::generators::Generator;
         let amount = bigint::U256::from_dec_str(amount).map_err(|_| GenerationError::ParseError)?;

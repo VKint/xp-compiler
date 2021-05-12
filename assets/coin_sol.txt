@@ -1,0 +1,39 @@
+PUSH1 0x64 ; LdU64(100)
+
+; Subject to change, Call convention setup
+PUSH1 0x00
+MSTORE
+
+; Call(mint)
+; Extract First argument, CopyLoc(0), doesn't delete original
+PUSH1 0x00
+MLOAD
+
+; Pack(0), Coin struct has only one member
+PUSH1 0x00
+MLOAD
+; Call(mint) end
+
+; Call convention setup
+PUSH1 0x00
+MSTORE
+
+; Call(burn)
+
+; MoveLoc(0) we don't do a real move because its far more efficient to just do this
+PUSH1 0x00
+MLOAD
+
+; Unpack(0) is not required because EVM opcode is not strongly typed
+
+; StLoc(1)
+PUSH1 0x01
+MSTORE
+
+; CopyLoc(1)
+PUSH1 0x01
+MLOAD
+; Call(burn) end
+
+POP
+STOP ; Main Ret

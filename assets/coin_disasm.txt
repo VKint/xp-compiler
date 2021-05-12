@@ -1,0 +1,19 @@
+LdU64(100)
+Call(mint)
+StLoc(0)
+MoveLoc(0)
+Call(burn)
+Pop
+Ret
+
+mint:
+	CopyLoc(0)
+	Pack(0)
+	Ret
+
+burn:
+	MoveLoc(0)
+	Unpack(0)
+	StLoc(1)
+	CopyLoc(1)
+	Ret
